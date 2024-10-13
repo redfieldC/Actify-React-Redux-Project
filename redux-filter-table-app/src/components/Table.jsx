@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectTableData } from "../features/tableSlice";
 import { useState } from "react";
 import './tableStyle.css';  // Corrected CSS import
+import Form from "./Form";
 
 const Table = () => {
   const tableData = useSelector(selectTableData);
@@ -63,6 +64,7 @@ const Table = () => {
 
   return (
     <div>
+      <Form/>
       <input
         type="text"
         placeholder="Search..."
