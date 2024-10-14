@@ -4,7 +4,7 @@ import { selectTableData } from "../features/tableSlice";
 import { useState } from "react";
 import "./tableStyle.css"; // Corrected CSS import
 import Form from "./Form";
-
+import * as XLSX from "xlsx";
 const Table = () => {
   const tableData = useSelector(selectTableData);
   const [currentPage, setCurrentPage] = useState(1);
@@ -65,10 +65,22 @@ const Table = () => {
     setCurrentPage(1);
   };
 
+  const handleDownloadExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(filteredData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Filtered Data");
+    XLSX.writeFile(workbook, "Filtered_Employee_Data.xlsx");
+  };
+
   return (
     <div className="entire-container">
       <div className="employeeHeader">
         <h1>Employee Data</h1>
+        <div className="excelDownloadContainer">
+          <button className="downloadExcelButton" onClick={handleDownloadExcel}>
+            Download Excel
+          </button>
+        </div>
       </div>
       <Form />
       <div className="search-container">
@@ -77,11 +89,11 @@ const Table = () => {
           placeholder="Search employee..."
           value={searchTerm}
           onChange={handleSearch}
-          style={{  }}
+          style={{}}
         />
       </div>
 
-      <table className="tableData" >
+      <table className="tableData">
         <thead>
           <tr>
             <th
@@ -154,14 +166,22 @@ const Table = () => {
         </tbody>
       </table>
 
-      <div className="previousNext-container" >
-        <button className="previousButton" onClick={prevPage} disabled={currentPage === 1}>
+      <div className="previousNext-container">
+        <button
+          className="previousButton"
+          onClick={prevPage}
+          disabled={currentPage === 1}
+        >
           Previous
         </button>
         <span style={{ margin: "0 10px" }}>
           Page {currentPage} of {totalPages}
         </span>
-        <button className="nextButton" onClick={nextPage} disabled={currentPage === totalPages}>
+        <button
+          className="nextButton"
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
+        >
           Next
         </button>
       </div>
