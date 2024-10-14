@@ -16,7 +16,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-      <div>
+      <div className="form-info">
         <label htmlFor="">ID</label>
         <input
           type="text"
@@ -30,7 +30,7 @@ const Form = () => {
         />
         {errors.id && <p className="error-message">{errors.id.message}</p>}
       </div>
-      <div>
+      <div className="form-info">
         <label htmlFor="">Name</label>
         <input
           type="text"
@@ -48,7 +48,7 @@ const Form = () => {
         />
         {errors.name && <p className="error-message">{errors.name.message}</p>}
       </div>
-      <div>
+      <div className="form-info">
         <label htmlFor="">Age</label>
         <input
           type="text"
@@ -70,7 +70,7 @@ const Form = () => {
         />
         {errors.age && <p className="error-message">{errors.age.message}</p>}
       </div>
-      <div>
+      <div className="form-info">
         <label htmlFor="">Job</label>
         <input
           type="text"
@@ -84,7 +84,7 @@ const Form = () => {
         />
         {errors.job && <p className="error-message">{errors.job.message}</p>}
       </div>
-      <div>
+      <div className="submit-container">
         <button type="submit">Submit</button>
       </div>
     </form>

@@ -2,13 +2,27 @@
 th {
   color: black;          /* Makes the text black */
   cursor: pointer;       /* Shows a pointer when hovering */
-  padding: 10px;         /* Adds padding to make the headers look better */
-  text-align: left;      /* Aligns text to the left */
+  /* padding: 10px;         Adds padding to make the headers look better */
+  /* text-align: center;      Aligns text to the left */
+
+}
+
+th, td{
+  border-right: 1px solid #0e0909;
+  text-align: center;
+}
+
+thead{
+  border-bottom: 1px solid black;
 }
 
 /* Styling for the sort arrows */
 th::after {
   content: '';           /* Ensure there's no default content */
+}
+
+th:last-child, td:last-child{
+  border-right: none;
 }
 
 th.sort-ascending::after {
@@ -19,6 +33,41 @@ th.sort-ascending::after {
 th.sort-descending::after {
   content: ' ▼';         /* Adds a down arrow for descending order */
   color: black;          /* Makes the arrow black */
+}
+
+.tableData{
+  width: 100%;
+  /* text-align: left; */
+  border-collapse: collapse;
+  margin-top: 3rem;
+}
+
+
+.previousNext-container{
+  margin-top: 2rem;
+  display: flex;              /* Use flexbox for layout */
+  justify-content: center;     /*Center the entire container
+  /* align-items: center;       */
+  margin-top: 2rem;   
+  gap:3rem;
+}
+
+.previousButton{
+  color:white;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background-color: blue;
+}
+
+.nextButton{
+  color:white;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background-color: blue;
 }
 
 .form-container label {
@@ -45,3 +94,49 @@ button {
   border-radius: 4px;
   font-size: 14px; /* Make the button text size larger */
 }
+
+.entire-container{
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+  margin-left: 7rem;
+  margin-right: 7rem;
+  border: 2px solid;
+  padding: 5rem;
+}
+
+.employeeHeader{
+  /* border: 2px solid; */
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-info{
+  margin-bottom: 2rem;
+}
+
+.submit-container{
+  padding-bottom:1rem;
+  margin-bottom: 16px;
+  text-align: center;
+  /* border: 2px solid darkseagreen; */
+  padding-top: 13px;
+}
+
+.submit-container button{
+  border: 1px solid green;
+  color: white;
+  padding: 13px;
+  background-color: green;
+}
+
+.search-container{
+  margin-bottom: "10px";
+  padding: "5px";
+  width: "100%";
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border: 1px solid;
+  border-radius: 1rem;
+  padding-left: 1rem;
+}
+

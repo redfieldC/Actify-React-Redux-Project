@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectTableData } from "../features/tableSlice";
 import { useState } from "react";
-import './tableStyle.css';  // Corrected CSS import
+import "./tableStyle.css"; // Corrected CSS import
 import Form from "./Form";
 
 const Table = () => {
@@ -10,7 +10,10 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortConfig, setSortConfig] = useState({ key: "", direction: "ascending" });
+  const [sortConfig, setSortConfig] = useState({
+    key: "",
+    direction: "ascending",
+  });
 
   const handleSort = (key) => {
     let direction = "ascending";
@@ -63,39 +66,69 @@ const Table = () => {
   };
 
   return (
-    <div>
-      <Form/>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearch}
-        style={{ marginBottom: "10px", padding: "5px", width: "100%" }}
-      />
-      <table border="1" style={{ width: "100%", textAlign: "left" }}>
+    <div className="entire-container">
+      <div className="employeeHeader">
+        <h1>Employee Data</h1>
+      </div>
+      <Form />
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search employee..."
+          value={searchTerm}
+          onChange={handleSearch}
+          style={{  }}
+        />
+      </div>
+
+      <table className="tableData" >
         <thead>
           <tr>
             <th
               onClick={() => handleSort("id")}
-              className={sortConfig.key === "id" ? (sortConfig.direction === "ascending" ? "sort-ascending" : "sort-descending") : ""}
+              className={
+                sortConfig.key === "id"
+                  ? sortConfig.direction === "ascending"
+                    ? "sort-ascending"
+                    : "sort-descending"
+                  : ""
+              }
             >
               ID
             </th>
             <th
               onClick={() => handleSort("name")}
-              className={sortConfig.key === "name" ? (sortConfig.direction === "ascending" ? "sort-ascending" : "sort-descending") : ""}
+              className={
+                sortConfig.key === "name"
+                  ? sortConfig.direction === "ascending"
+                    ? "sort-ascending"
+                    : "sort-descending"
+                  : ""
+              }
             >
               Name
             </th>
             <th
               onClick={() => handleSort("age")}
-              className={sortConfig.key === "age" ? (sortConfig.direction === "ascending" ? "sort-ascending" : "sort-descending") : ""}
+              className={
+                sortConfig.key === "age"
+                  ? sortConfig.direction === "ascending"
+                    ? "sort-ascending"
+                    : "sort-descending"
+                  : ""
+              }
             >
               Age
             </th>
             <th
               onClick={() => handleSort("job")}
-              className={sortConfig.key === "job" ? (sortConfig.direction === "ascending" ? "sort-ascending" : "sort-descending") : ""}
+              className={
+                sortConfig.key === "job"
+                  ? sortConfig.direction === "ascending"
+                    ? "sort-ascending"
+                    : "sort-descending"
+                  : ""
+              }
             >
               Job
             </th>
@@ -121,14 +154,14 @@ const Table = () => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: "10px" }}>
-        <button onClick={prevPage} disabled={currentPage === 1}>
+      <div className="previousNext-container" >
+        <button className="previousButton" onClick={prevPage} disabled={currentPage === 1}>
           Previous
         </button>
         <span style={{ margin: "0 10px" }}>
           Page {currentPage} of {totalPages}
         </span>
-        <button onClick={nextPage} disabled={currentPage === totalPages}>
+        <button className="nextButton" onClick={nextPage} disabled={currentPage === totalPages}>
           Next
         </button>
       </div>
