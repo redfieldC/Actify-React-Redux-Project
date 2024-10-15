@@ -73,117 +73,137 @@ const Table = () => {
   };
 
   return (
-    <div className="entire-container">
-      <div className="employeeHeader">
-        <h1>Employee Data</h1>
-        <div className="excelDownloadContainer">
-          <button className="downloadExcelButton" onClick={handleDownloadExcel}>
-            Download Excel
-          </button>
+    <div className="container-with-sidebar">
+      <div className="sidebar">
+        <h2>Sidebar</h2>
+        <div className="sidebar-item">
+          <a href="#link1">Link 1</a>
+        </div>
+        <div className="sidebar-item">
+          <a href="#link2">Link 2</a>
+        </div>
+        <div className="sidebar-item">
+          <a href="#link3">Link 3</a>
+        </div>
+        <div className="sidebar-item">
+          <a href="#link4">Link 4</a>
         </div>
       </div>
-      <Form />
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search employee..."
-          value={searchTerm}
-          onChange={handleSearch}
-          style={{}}
-        />
-      </div>
+      <div className="entire-container">
+        <div className="employeeHeader">
+          <h1>Employee Data</h1>
+          <div className="excelDownloadContainer">
+            <button
+              className="downloadExcelButton"
+              onClick={handleDownloadExcel}
+            >
+              Download Excel
+            </button>
+          </div>
+        </div>
+        <Form />
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search employee..."
+            value={searchTerm}
+            onChange={handleSearch}
+            style={{}}
+          />
+        </div>
 
-      <table className="tableData">
-        <thead>
-          <tr>
-            <th
-              onClick={() => handleSort("id")}
-              className={
-                sortConfig.key === "id"
-                  ? sortConfig.direction === "ascending"
-                    ? "sort-ascending"
-                    : "sort-descending"
-                  : ""
-              }
-            >
-              ID
-            </th>
-            <th
-              onClick={() => handleSort("name")}
-              className={
-                sortConfig.key === "name"
-                  ? sortConfig.direction === "ascending"
-                    ? "sort-ascending"
-                    : "sort-descending"
-                  : ""
-              }
-            >
-              Name
-            </th>
-            <th
-              onClick={() => handleSort("age")}
-              className={
-                sortConfig.key === "age"
-                  ? sortConfig.direction === "ascending"
-                    ? "sort-ascending"
-                    : "sort-descending"
-                  : ""
-              }
-            >
-              Age
-            </th>
-            <th
-              onClick={() => handleSort("job")}
-              className={
-                sortConfig.key === "job"
-                  ? sortConfig.direction === "ascending"
-                    ? "sort-ascending"
-                    : "sort-descending"
-                  : ""
-              }
-            >
-              Job
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.length > 0 ? (
-            currentItems.map((row) => (
-              <tr key={row.id}>
-                <td>{row.id}</td>
-                <td>{row.name}</td>
-                <td>{row.age}</td>
-                <td>{row.job}</td>
-              </tr>
-            ))
-          ) : (
+        <table className="tableData">
+          <thead>
             <tr>
-              <td colSpan="4" style={{ textAlign: "center" }}>
-                No result found
-              </td>
+              <th
+                onClick={() => handleSort("id")}
+                className={
+                  sortConfig.key === "id"
+                    ? sortConfig.direction === "ascending"
+                      ? "sort-ascending"
+                      : "sort-descending"
+                    : ""
+                }
+              >
+                ID
+              </th>
+              <th
+                onClick={() => handleSort("name")}
+                className={
+                  sortConfig.key === "name"
+                    ? sortConfig.direction === "ascending"
+                      ? "sort-ascending"
+                      : "sort-descending"
+                    : ""
+                }
+              >
+                Name
+              </th>
+              <th
+                onClick={() => handleSort("age")}
+                className={
+                  sortConfig.key === "age"
+                    ? sortConfig.direction === "ascending"
+                      ? "sort-ascending"
+                      : "sort-descending"
+                    : ""
+                }
+              >
+                Age
+              </th>
+              <th
+                onClick={() => handleSort("job")}
+                className={
+                  sortConfig.key === "job"
+                    ? sortConfig.direction === "ascending"
+                      ? "sort-ascending"
+                      : "sort-descending"
+                    : ""
+                }
+              >
+                Job
+              </th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentItems.length > 0 ? (
+              currentItems.map((row) => (
+                <tr key={row.id}>
+                  <td>{row.id}</td>
+                  <td>{row.name}</td>
+                  <td>{row.age}</td>
+                  <td>{row.job}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" style={{ textAlign: "center" }}>
+                  No result found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
 
-      <div className="previousNext-container">
-        <button
-          className="previousButton"
-          onClick={prevPage}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span style={{ margin: "0 10px" }}>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          className="nextButton"
-          onClick={nextPage}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
+        <div className="previousNext-container">
+          <button
+            className="previousButton"
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span style={{ margin: "0 10px" }}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="nextButton"
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
